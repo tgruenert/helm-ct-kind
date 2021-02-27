@@ -58,6 +58,7 @@ RUN curl -LO "https://github.com/helm/chart-testing/releases/download/v${ct_vers
 RUN mv /entrypoint.sh /entrypoint-kind.sh 
 RUN sed -i -e '$s/exec "$@"/cd \/data \&\& exec "$@"/' entrypoint-kind.sh
 COPY entrypoint.sh /
+RUN chmod +x /entrypoint.sh
 
 # Ensure that the binary is available on path and is executable
 RUN ct --help
