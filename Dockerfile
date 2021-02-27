@@ -54,5 +54,12 @@ RUN curl -LO "https://github.com/helm/chart-testing/releases/download/v${ct_vers
     cp /usr/local/ct-${ct_version}/etc/chart_schema.yaml /etc/ct/chart_schema.yaml && \
     cp /usr/local/ct-${ct_version}/etc/lintconf.yaml /etc/ct/lintconf.yaml
 
+# wrap original entrypoint and change working dir for ct before calling exec
+RUN mv /entrypoint.sh /entrypoint-kind.sh 
+RUN sed -i -e '$s/exec "$@"/cd \/data \&\& exec "$@"/' entrypoint-kind.sh
+COPY entrypoint.sh /
+
 # Ensure that the binary is available on path and is executable
 RUN ct --help
+
+ENTRYPOINT ["/usr/bin/tini", "--", "/entrypoint.sh"]
