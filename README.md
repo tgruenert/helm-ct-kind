@@ -7,10 +7,10 @@ This container provides a complete stack for
 without any external dependancies. It should be possible to deploy this container in a kubernetes environment for testing 
 within a CI/CD pipeline.
 
-Thank you for the main work to (Jie Yu)[https://github.com/jieyu] with her great (article)[https://d2iq.com/blog/running-kind-inside-a-kubernetes-cluster-for-continuous-integration].
+Thank you for the main work to [Jie Yu](https://github.com/jieyu) with her great [article](https://d2iq.com/blog/running-kind-inside-a-kubernetes-cluster-for-continuous-integration).
 Here container is base image for this one.
 
-And thank you for (chart-testing)[https://github.com/helm/chart-testing].
+This container is also using [chart-testing](https://github.com/helm/chart-testing).
 
 ## Running
 
@@ -21,7 +21,7 @@ run for example
 docker run -v ${PWD}:/data --privileged tgruenert/helm-ct-kind:0.1 ct lint-and-install
 ```
 
-Docker is published at [https://hub.docker.com/repository/docker/tgruenert/helm-ct-kind/general].
+See current tags at https://hub.docker.com/repository/docker/tgruenert/helm-ct-kind/general.
 
 ## TODO
 - test on kubernetes
